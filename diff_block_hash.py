@@ -18,27 +18,48 @@ class DiffBlockHash:
         self.zkevm_rpc = rpc.RpcClient(self.config["zkevm_rpc"])
         self.erigon_rpc = rpc.RpcClient(self.config["erigon_rpc"])
         return
+        
+    def diff(self, zkevm_result, erigon_result, key):
+        zkevm = self.zkevm_rpc.get_value(zkevm_result, key)
+        erigon = self.erigon_rpc.get_value(erigon_result, key)
+        logging.info("zkevm_result" + json.dumps(zkevm_result, indent=4) + "Key, " + key)
+        if zkevm != erigon:
+            logging.error("!!!!!!!!!!!!!!!!!!Different!!!!!!!!!!!!!!!!!!")
+            logging.error("zkevm: " + json.dumps(zkevm, indent=4) + ", erigon: " + json.dumps(erigon, indent=4))
 
-    def format_decimal(self, num):
-        str_num = str(num)
-        if "." in str_num:
-            a, b = str(str_num).split('.')
-            return int(a)
-        else:
-            return int(str_num)
-
-    def block(self, block):
-        logging.info("test start")
-        zkevm_result = self.zkevm_rpc.get_block_by_number(block)
-        erigon_result = self.erigon_rpc.get_block_by_number(block)
-        zkevm_hash = self.zkevm_rpc.get_value(zkevm_result, "hash")
-        erigon_hash = self.erigon_rpc.get_value(erigon_result, "hash")
-        if zkevm_hash != erigon_hash:
-            logging.error("!!!!!!!!!!!!!!!!!!Block hash is different!!!!!!!!!!!!!!!!!!")
-            logging.error("zkevm hash: " + zkevm_hash + ", erigon hash: " + erigon_hash)
             exit(1)
         else:
-            logging.info("Block number: " + str(block) + ", hash: " + zkevm_hash)
+            logging.info("Same " + key + ", " + str(zkevm))
+
+    def block(self, block):
+        logging.info("Compare block hash start")
+        zkevm_result = self.zkevm_rpc.get_block_by_number(block)
+        erigon_result = self.erigon_rpc.get_block_by_number(block)
+        self.diff(zkevm_result, erigon_result, "hash")
+
+        logging.info("Compare block hash end")
+        return
+    
+    def receipt(self, hash):
+        logging.info("Compare receipt start")
+        zkevm_result = self.zkevm_rpc.get_transaction_receipt(hash)
+        erigon_result = self.erigon_rpc.get_transaction_receipt(hash)
+        # self.diff(zkevm_result, erigon_result, "cumulativeGasUsed")
+        self.diff(zkevm_result["result"]["logs"], erigon_result["result"]["logs"], "blockNumber")
+        # self.diff(zkevm_result["result"]["logs"], erigon_result["result"]["logs"], "transactionIndex")
+        # self.diff(zkevm_result, erigon_result, "status")
+        # self.diff(zkevm_result, erigon_result, "transactionHash")
+        # self.diff(zkevm_result, erigon_result, "transactionIndex")
+        # self.diff(zkevm_result, erigon_result, "blockHash")
+        # self.diff(zkevm_result, erigon_result, "blockNumber")
+        # self.diff(zkevm_result, erigon_result, "gasUsed")
+        # self.diff(zkevm_result, erigon_result, "from")
+        # self.diff(zkevm_result, erigon_result, "to")
+        # self.diff(zkevm_result, erigon_result, "contractAddress")
+        # self.diff(zkevm_result, erigon_result, "type")
+        # self.diff(zkevm_result, erigon_result, "effectiveGasPrice")
+        # self.diff(zkevm_result, erigon_result, "logsBloom")
+
         return
 
 if __name__ == '__main__':
@@ -53,6 +74,9 @@ if __name__ == '__main__':
     if opt == "block":
         block = int(sys.argv[2])
         case.block(block)
+    elif opt == "receipt":
+        hash = sys.argv[2]
+        case.receipt(hash)
     else:
         logging.error("Invalid option")
 
