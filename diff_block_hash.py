@@ -15,7 +15,8 @@ import os
 class DiffBlockHash:
     def __init__(self, configObj):
         self.config = configObj
-        self.cli = rpc.CLI(self.config["rpc"])
+        self.zkevm_rpc = rpc.RpcClient(self.config["zkevm_rpc"])
+        self.erigon_rpc = rpc.RpcClient(self.config["erigon_rpc"])
         return
 
     def format_decimal(self, num):
@@ -26,9 +27,18 @@ class DiffBlockHash:
         else:
             return int(str_num)
 
-    def test(self):
-
-
+    def block(self, block):
+        logging.info("test start")
+        zkevm_result = self.zkevm_rpc.get_block_by_number(block)
+        erigon_result = self.erigon_rpc.get_block_by_number(block)
+        zkevm_hash = self.zkevm_rpc.get_value(zkevm_result, "hash")
+        erigon_hash = self.erigon_rpc.get_value(erigon_result, "hash")
+        if zkevm_hash != erigon_hash:
+            logging.error("!!!!!!!!!!!!!!!!!!Block hash is different!!!!!!!!!!!!!!!!!!")
+            logging.error("zkevm hash: " + zkevm_hash + ", erigon hash: " + erigon_hash)
+            exit(1)
+        else:
+            logging.info("Block number: " + str(block) + ", hash: " + zkevm_hash)
         return
 
 if __name__ == '__main__':
@@ -39,12 +49,10 @@ if __name__ == '__main__':
     file.close()
     case = DiffBlockHash(moduleConfig)
 
-    if len(sys.argv) < 2:
-        case.exit()
     opt = sys.argv[1]
-
-    if opt == "test":
-        case.test()
+    if opt == "block":
+        block = int(sys.argv[2])
+        case.block(block)
     else:
-        case.exit()
+        logging.error("Invalid option")
 
