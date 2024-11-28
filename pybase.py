@@ -24,11 +24,11 @@ class Pybase:
         logger.setLevel(log_level)
         rht = logging.FileHandler(log_path, encoding='utf-8', mode='a')
         fmt = logging.Formatter(
-            '%(asctime)s - %(filename)s[line:%(lineno)d](%(funcName)s) - %(levelname)s: %(message)s',
+            '%(asctime)s-%(filename)s[line:%(lineno)d]-%(levelname)s: %(message)s',
             '%Y-%m-%d %H:%M:%S')
         rht.setFormatter(fmt)
         logging.basicConfig(
-            format='%(asctime)s - %(filename)s[line:%(lineno)d](%(funcName)s) - %(levelname)s: %(message)s',
+            format='%(asctime)s-%(filename)s[line:%(lineno)d]-%(levelname)s: %(message)s',
             datefmt='%Y-%m-%d %H:%M:%S')
         logger.addHandler(rht)
         

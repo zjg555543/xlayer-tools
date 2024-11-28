@@ -1,0 +1,4 @@
+{
+    "seq": "http://erigon-seq.vali-global.svc.test.local:8545",
+    "rpc": "http://erigon-rpc.vali-global.svc.test.local:8545"
+}

@@ -31,6 +31,86 @@ class RpcClient:
         else:
             return {"error": f"Request failed with status code {response.status_code}"}
         
+    def get_latest_block(self):
+        # 构造 JSON-RPC 请求数据
+        headers = {'Content-Type': 'application/json'}
+        payload = {
+            "jsonrpc": "2.0",
+            "method": "eth_getBlockByNumber",
+            "params": ["latest", True],
+            "id": 1
+        }
+
+        # 发送 POST 请求
+        response = requests.post(self.node_rpc, headers=headers, data=json.dumps(payload))
+
+        # 检查响应状态码
+        if response.status_code == 200:
+            result = response.json()
+            return result
+        else:
+            return {"error": f"Request failed with status code {response.status_code}"}
+        
+    def get_batch_bumber(self):
+        # 构造 JSON-RPC 请求数据
+        headers = {'Content-Type': 'application/json'}
+        payload = {
+            "jsonrpc": "2.0",
+            "method": "zkevm_batchNumber",
+            "params": [],
+            "id": 1
+        }
+
+        # 发送 POST 请求
+        response = requests.post(self.node_rpc, headers=headers, data=json.dumps(payload))
+
+        # 检查响应状态码
+        if response.status_code == 200:
+            result = response.json()
+            return result
+        else:
+            return {"error": f"Request failed with status code {response.status_code}"}
+
+    def get_virtual_batch_bumber(self):
+        # 构造 JSON-RPC 请求数据
+        headers = {'Content-Type': 'application/json'}
+        payload = {
+            "jsonrpc": "2.0",
+            "method": "zkevm_virtualBatchNumber",
+            "params": [],
+            "id": 1
+        }
+
+        # 发送 POST 请求
+        response = requests.post(self.node_rpc, headers=headers, data=json.dumps(payload))
+
+        # 检查响应状态码
+        if response.status_code == 200:
+            result = response.json()
+            return result
+        else:
+            return {"error": f"Request failed with status code {response.status_code}"}
+        
+    def get_verified_batch_number(self):
+        # 构造 JSON-RPC 请求数据
+        headers = {'Content-Type': 'application/json'}
+        payload = {
+            "jsonrpc": "2.0",
+            "method": "zkevm_verifiedBatchNumber",
+            "params": [],
+            "id": 1
+        }
+
+        # 发送 POST 请求
+        response = requests.post(self.node_rpc, headers=headers, data=json.dumps(payload))
+
+        # 检查响应状态码
+        if response.status_code == 200:
+            result = response.json()
+            return result
+        else:
+            return {"error": f"Request failed with status code {response.status_code}"}
+        
     def get_transaction_receipt(self, transaction_hash):
         # 构造 JSON-RPC 请求数据
         headers = {'Content-Type': 'application/json'}

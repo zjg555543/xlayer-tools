@@ -1,0 +1,94 @@
+[INFO] [11-28|15:24:38.530] [3/15 Batches] Highest block in datastream datastreamBlock=72745 stageProgressBlockNo=70969
+[INFO] [11-28|15:24:38.530] [3/15 Batches] Execution behind, skipping stage 
+[INFO] [11-28|15:24:38.530] [3/15 Batches] Finished Batches stage 
+[INFO] [11-28|15:24:38.531] [6/15 Execution] Short circuit           batch=1984 block=70969
+[INFO] [11-28|15:24:38.531] [6/15 Execution] Blocks execution        from=70968 to=70969
+[WARN] [11-28|15:24:38.625] [6/15 Execution] Blockhash mismatch      blockNumber=70969 datastreamBlockHash=0xf25f8c677710079e4f8e82e172fed95ae54eb249639d21a0f4c2505317d666c0 calculatedBlockHash=0xb8c4b7afdc5a627eeee12ff76c851dcf9a88662af53ed0ccca7972b3e469f408
+[INFO] [11-28|15:24:38.630] [6/15 Execution] Completed on            block=70969
+[INFO] [11-28|15:24:38.634] [8/15 IntermediateHashes] SMT not using mapmutation 
+[INFO] [11-28|15:24:38.634] [8/15 IntermediateHashes] Increment trie hashes started previousRootHeight=70968 calculatingRootHeight=70969
+[INFO] [11-28|15:24:38.653] [8/15 IntermediateHashes] SMT incremental progress (pre-process): 4/4 (100%) 
+[INFO] [11-28|15:24:39.079] [8/15 IntermediateHashes] SMT incremental progress (deletes): 15535/15535 (100%) 
+[INFO] [11-28|15:24:39.213] [8/15 IntermediateHashes] Regeneration trie hashes finished. Commiting batch 
+[INFO] [11-28|15:24:39.213] [8/15 IntermediateHashes] Increment ended 
+[INFO] [11-28|15:24:39.214] [8/15 IntermediateHashes] Trie root      hash=0x09631bb355b41de6b74463f5f5e5d46287b57d30811a7708d9eddea04515e594
+[EROR] [11-28|15:24:39.219] Staged Sync                              err="[8/15 IntermediateHashes] Wrong trie root of block 70969: 09631bb355b41de6b74463f5f5e5d46287b57d30811a7708d9eddea04515e594, expected (from header): 7ddb51014445bb4bd0ee7137bf5193734684ecd6e92d6d0f6299cc6d458c489f. Block hash: b8c4b7afdc5a627eeee12ff76c851dcf9a88662af53ed0ccca7972b3e469f408, trace: [stageloop.go:105 panic.go:920 stage_interhashes.go:174 stages.go:347 sync.go:513 sync.go:383 stageloop.go:154 stageloop.go:73 asm_amd64.s:1650]"
+[INFO] [11-28|15:24:39.719] [9/15 CallTraces] Started 
+[INFO] [11-28|15:24:39.719] [9/15 CallTraces] Nothing new to process 
+[INFO] [11-28|15:24:39.719] [9/15 CallTraces] Finished 
+[INFO] [11-28|15:24:39.719] [10/15 AccountHistoryIndex] Started 
+[INFO] [11-28|15:24:39.719] [10/15 AccountHistoryIndex] Nothing new to process 
+[INFO] [11-28|15:24:39.719] [10/15 AccountHistoryIndex] Finished 
+[INFO] [11-28|15:24:39.719] [11/15 StorageHistoryIndex] Started 
+[INFO] [11-28|15:24:39.719] [11/15 StorageHistoryIndex] Nothing new to process 
+[INFO] [11-28|15:24:39.719] [11/15 StorageHistoryIndex] Finished 
+[INFO] [11-28|15:24:39.719] [12/15 LogIndex] Nothing new to process 
+[INFO] [11-28|15:24:39.719] [14/15 DataStream] Starting... 
+[INFO] [11-28|15:24:39.719] [14/15 DataStream] Getting progress      adding up to blockNum=70968 previousProgress=70968
+[INFO] [11-28|15:24:39.732] [14/15 DataStream] stage complete        block=70968
+[INFO] [11-28|15:24:39.732] [15/15 Finish] Started 
+[INFO] [11-28|15:24:39.732] [15/15 Finish] Nothing new to process 
+[INFO] [11-28|15:24:39.732] [15/15 Finish] Finished 
+[INFO] [11-28|15:24:39.732] Timings (slower than 50ms)               alloc=66.5MB sys=403.7MB
+[INFO] [11-28|15:24:39.732] [1/15 L1Syncer] Starting L1 sync stage 
+[INFO] [11-28|15:24:39.732] [1/15 L1Syncer] No new L1 blocks to sync 
+[INFO] [11-28|15:24:39.732] [1/15 L1Syncer] Finished L1 sync stage  
+[INFO] [11-28|15:24:39.732] [2/15 L1InfoTree] Starting L1 Info Tree stage 
+[INFO] [11-28|15:24:39.732] [2/15 L1InfoTree] Info tree updates      count=0 latestIndex=0
+[INFO] [11-28|15:24:39.732] [2/15 L1InfoTree] Finished L1 Info Tree stage 
+[INFO] [11-28|15:24:39.732] [3/15 Batches] Starting batches stage 
+[INFO] [11-28|15:24:39.738] [3/15 Batches] Highest block in datastream datastreamBlock=72745 stageProgressBlockNo=70969
+[INFO] [11-28|15:24:39.738] [3/15 Batches] Execution behind, skipping stage 
+[INFO] [11-28|15:24:39.738] [3/15 Batches] Finished Batches stage 
+[INFO] [11-28|15:24:39.739] [6/15 Execution] Short circuit           batch=1984 block=70969
+[INFO] [11-28|15:24:39.739] [6/15 Execution] Blocks execution        from=70968 to=70969
+[WARN] [11-28|15:24:39.831] [6/15 Execution] Blockhash mismatch      blockNumber=70969 datastreamBlockHash=0xf25f8c677710079e4f8e82e172fed95ae54eb249639d21a0f4c2505317d666c0 calculatedBlockHash=0xb8c4b7afdc5a627eeee12ff76c851dcf9a88662af53ed0ccca7972b3e469f408
+[INFO] [11-28|15:24:39.838] [6/15 Execution] Completed on            block=70969
+[INFO] [11-28|15:24:39.844] [8/15 IntermediateHashes] SMT not using mapmutation 
+[INFO] [11-28|15:24:39.844] [8/15 IntermediateHashes] Increment trie hashes started previousRootHeight=70968 calculatingRootHeight=70969
+[INFO] [11-28|15:24:39.876] [8/15 IntermediateHashes] SMT incremental progress (pre-process): 4/4 (100%) 
+[INFO] [11-28|15:24:40.331] [8/15 IntermediateHashes] SMT incremental progress (deletes): 15535/15535 (100%) 
+[INFO] [11-28|15:24:40.481] [8/15 IntermediateHashes] Regeneration trie hashes finished. Commiting batch 
+[INFO] [11-28|15:24:40.481] [8/15 IntermediateHashes] Increment ended 
+[INFO] [11-28|15:24:40.481] [8/15 IntermediateHashes] Trie root      hash=0x09631bb355b41de6b74463f5f5e5d46287b57d30811a7708d9eddea04515e594
+[EROR] [11-28|15:24:40.487] Staged Sync                              err="[8/15 IntermediateHashes] Wrong trie root of block 70969: 09631bb355b41de6b74463f5f5e5d46287b57d30811a7708d9eddea04515e594, expected (from header): 7ddb51014445bb4bd0ee7137bf5193734684ecd6e92d6d0f6299cc6d458c489f. Block hash: b8c4b7afdc5a627eeee12ff76c851dcf9a88662af53ed0ccca7972b3e469f408, trace: [stageloop.go:105 panic.go:920 stage_interhashes.go:174 stages.go:347 sync.go:513 sync.go:383 stageloop.go:154 stageloop.go:73 asm_amd64.s:1650]"
+[INFO] [11-28|15:24:40.988] [9/15 CallTraces] Started 
+[INFO] [11-28|15:24:40.988] [9/15 CallTraces] Nothing new to process 
+[INFO] [11-28|15:24:40.988] [9/15 CallTraces] Finished 
+[INFO] [11-28|15:24:40.988] [10/15 AccountHistoryIndex] Started 
+[INFO] [11-28|15:24:40.988] [10/15 AccountHistoryIndex] Nothing new to process 
+[INFO] [11-28|15:24:40.988] [10/15 AccountHistoryIndex] Finished 
+[INFO] [11-28|15:24:40.988] [11/15 StorageHistoryIndex] Started 
+[INFO] [11-28|15:24:40.988] [11/15 StorageHistoryIndex] Nothing new to process 
+[INFO] [11-28|15:24:40.988] [11/15 StorageHistoryIndex] Finished 
+[INFO] [11-28|15:24:40.988] [12/15 LogIndex] Nothing new to process 
+[INFO] [11-28|15:24:40.988] [14/15 DataStream] Starting... 
+[INFO] [11-28|15:24:40.988] [14/15 DataStream] Getting progress      adding up to blockNum=70968 previousProgress=70968
+[INFO] [11-28|15:24:40.996] [14/15 DataStream] stage complete        block=70968
+[INFO] [11-28|15:24:40.996] [15/15 Finish] Started 
+[INFO] [11-28|15:24:40.996] [15/15 Finish] Nothing new to process 
+[INFO] [11-28|15:24:40.996] [15/15 Finish] Finished 
+[INFO] [11-28|15:24:40.996] Timings (slower than 50ms)               alloc=104.7MB sys=403.7MB
+[INFO] [11-28|15:24:40.996] [1/15 L1Syncer] Starting L1 sync stage 
+[INFO] [11-28|15:24:40.996] [1/15 L1Syncer] No new L1 blocks to sync 
+[INFO] [11-28|15:24:40.996] [1/15 L1Syncer] Finished L1 sync stage  
+[INFO] [11-28|15:24:40.996] [2/15 L1InfoTree] Starting L1 Info Tree stage 
+[INFO] [11-28|15:24:40.996] [2/15 L1InfoTree] Info tree updates      count=0 latestIndex=0
+[INFO] [11-28|15:24:40.996] [2/15 L1InfoTree] Finished L1 Info Tree stage 
+[INFO] [11-28|15:24:40.996] [3/15 Batches] Starting batches stage 
+[INFO] [11-28|15:24:41.070] [3/15 Batches] Highest block in datastream datastreamBlock=72745 stageProgressBlockNo=70969
+[INFO] [11-28|15:24:41.070] [3/15 Batches] Execution behind, skipping stage 
+[INFO] [11-28|15:24:41.070] [3/15 Batches] Finished Batches stage 
+[INFO] [11-28|15:24:41.071] [6/15 Execution] Short circuit           batch=1984 block=70969
+[INFO] [11-28|15:24:41.071] [6/15 Execution] Blocks execution        from=70968 to=70969
+[WARN] [11-28|15:24:41.185] [6/15 Execution] Blockhash mismatch      blockNumber=70969 datastreamBlockHash=0xf25f8c677710079e4f8e82e172fed95ae54eb249639d21a0f4c2505317d666c0 calculatedBlockHash=0xb8c4b7afdc5a627eeee12ff76c851dcf9a88662af53ed0ccca7972b3e469f408
+[INFO] [11-28|15:24:41.191] [6/15 Execution] Completed on            block=70969
+[INFO] [11-28|15:24:41.197] [8/15 IntermediateHashes] SMT not using mapmutation 
+[INFO] [11-28|15:24:41.197] [8/15 IntermediateHashes] Increment trie hashes started previousRootHeight=70968 calculatingRootHeight=70969
+[INFO] [11-28|15:24:41.224] [8/15 IntermediateHashes] SMT incremental progress (pre-process): 4/4 (100%) 
+[INFO] [11-28|15:24:41.673] [8/15 IntermediateHashes] SMT incremental progress (deletes): 15535/15535 (100%) 
+[INFO] [11-28|15:24:41.816] [8/15 IntermediateHashes] Regeneration trie hashes finished. Commiting batch 
+[INFO] [11-28|15:24:41.816] [8/15 IntermediateHashes] Increment ended 
+[INFO] [11-28|15:24:41.816] [8/15 IntermediateHashes] Trie root      hash=0x09631bb355b41de6b74463f5f5e5d46287b57d30811a7708d9eddea04515e594
+[EROR] [11-28|15:24:41.822] Staged Sync                              err="[8/15 IntermediateHashes] Wrong trie root of block 70969: 09631bb355b41de6b74463f5f5e5d46287b57d30811a7708d9eddea04515e594, expected (from header): 7ddb51014445bb4bd0ee7137bf5193734684ecd6e92d6d0f6299cc6d458c489f. Block hash: b8c4b7afdc5a627eeee12ff76c851dcf9a88662af53ed0ccca7972b3e469f408, trace: [stageloop.go:105 panic.go:920 stage_interhashes.go:174 stages.go:347 sync.go:513 sync.go:383 stageloop.go:154 stageloop.go:73 asm_amd64.s:1650]"
+[
