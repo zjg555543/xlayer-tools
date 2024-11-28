@@ -22,10 +22,10 @@ class DiffBlockHash:
     def diff(self, zkevm_result, erigon_result, key):
         zkevm = self.zkevm_rpc.get_value(zkevm_result, key)
         erigon = self.erigon_rpc.get_value(erigon_result, key)
-        logging.info("zkevm_result" + json.dumps(zkevm_result, indent=4) + "Key, " + key)
+        # logging.info("zkevm_result" + json.dumps(zkevm_result, indent=4) + "Key, " + key)
         if zkevm != erigon:
             logging.error("!!!!!!!!!!!!!!!!!!Different!!!!!!!!!!!!!!!!!!")
-            logging.error("zkevm: " + json.dumps(zkevm, indent=4) + ", erigon: " + json.dumps(erigon, indent=4))
+            logging.error(key + ", zkevm: " + json.dumps(zkevm, indent=4) + ", erigon: " + json.dumps(erigon, indent=4))
 
             exit(1)
         else:
@@ -44,21 +44,25 @@ class DiffBlockHash:
         logging.info("Compare receipt start")
         zkevm_result = self.zkevm_rpc.get_transaction_receipt(hash)
         erigon_result = self.erigon_rpc.get_transaction_receipt(hash)
-        # self.diff(zkevm_result, erigon_result, "cumulativeGasUsed")
-        self.diff(zkevm_result["result"]["logs"], erigon_result["result"]["logs"], "blockNumber")
-        # self.diff(zkevm_result["result"]["logs"], erigon_result["result"]["logs"], "transactionIndex")
-        # self.diff(zkevm_result, erigon_result, "status")
-        # self.diff(zkevm_result, erigon_result, "transactionHash")
-        # self.diff(zkevm_result, erigon_result, "transactionIndex")
-        # self.diff(zkevm_result, erigon_result, "blockHash")
-        # self.diff(zkevm_result, erigon_result, "blockNumber")
-        # self.diff(zkevm_result, erigon_result, "gasUsed")
-        # self.diff(zkevm_result, erigon_result, "from")
-        # self.diff(zkevm_result, erigon_result, "to")
-        # self.diff(zkevm_result, erigon_result, "contractAddress")
-        # self.diff(zkevm_result, erigon_result, "type")
-        # self.diff(zkevm_result, erigon_result, "effectiveGasPrice")
-        # self.diff(zkevm_result, erigon_result, "logsBloom")
+        for i in range(len(zkevm_result["result"]["logs"])):
+            self.diff(zkevm_result["result"]["logs"][i], erigon_result["result"]["logs"][i], "address")
+            # self.diff(zkevm_result["result"]["logs"][i], erigon_result["result"]["logs"][i], "data")
+            self.diff(zkevm_result["result"]["logs"][i], erigon_result["result"]["logs"][i], "blockNumber")
+            self.diff(zkevm_result["result"]["logs"][i], erigon_result["result"]["logs"][i], "transactionHash")
+            self.diff(zkevm_result["result"]["logs"][i], erigon_result["result"]["logs"][i], "transactionIndex")
+            # self.diff(zkevm_result["result"]["logs"][i], erigon_result["result"]["logs"][i], "logIndex")
+        
+        self.diff(zkevm_result, erigon_result, "status")
+        self.diff(zkevm_result, erigon_result, "transactionHash")
+        self.diff(zkevm_result, erigon_result, "transactionIndex")
+        self.diff(zkevm_result, erigon_result, "blockNumber")
+        self.diff(zkevm_result, erigon_result, "gasUsed")
+        self.diff(zkevm_result, erigon_result, "from")
+        self.diff(zkevm_result, erigon_result, "to")
+        self.diff(zkevm_result, erigon_result, "contractAddress")
+        self.diff(zkevm_result, erigon_result, "type")
+        self.diff(zkevm_result, erigon_result, "effectiveGasPrice")
+        self.diff(zkevm_result, erigon_result, "logsBloom")
 
         return
 

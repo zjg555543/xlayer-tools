@@ -53,10 +53,10 @@ class RpcClient:
         
     def get_value(self, object, key):
         if "result" in object and key in object["result"]:
-            logging.info("key: " + key + ", value: " + json.dumps(object["result"][key], indent=4))
+            # logging.info("key: " + key + ", value: " + json.dumps(object["result"][key], indent=4))
             return object["result"][key]
         elif key in object:
-            logging.info("key: " + key + ", value: " + json.dumps(object[key], indent=4))
+            # logging.info("key: " + key + ", value: " + json.dumps(object[key], indent=4))
             return object[key]
         else:
             logging.info("key: " + key + ", value: " + object)
