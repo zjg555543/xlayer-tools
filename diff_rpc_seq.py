@@ -25,7 +25,7 @@ class DiffRpcSeq:
         rpc = int(rpc_result["result"]["number"], 16)
         seq = int(seq_result["result"]["number"], 16)
         diff = seq - rpc
-        logging.info("[block] rpc: " + str(rpc) + ", seq: " + str(seq) + ", diff: " + str(diff))
+        logging.info("[Block]   seq/rpc: " + str(seq) + "/" + str(rpc) + ", diff: " + str(diff))
 
     def get_batch_bumber(self):
         rpc_result = self.rpc.get_batch_bumber()
@@ -33,7 +33,7 @@ class DiffRpcSeq:
         rpc = int(rpc_result["result"], 16)
         seq = int(seq_result["result"], 16)
         diff = seq - rpc
-        logging.info("[batch] rpc: " + str(rpc) + ", seq: " + str(seq) + ", diff: " + str(diff))
+        logging.info("[Trust]   seq/rpc: " + str(seq) + "/" + str(rpc) + ", diff: " + str(diff))
         return
  
     def get_virtual_batch_bumber(self):
@@ -42,7 +42,7 @@ class DiffRpcSeq:
         rpc = int(rpc_result["result"], 16)
         seq = int(seq_result["result"], 16)
         diff = seq - rpc
-        logging.info("[virtual] rpc: " + str(rpc) + ", seq: " + str(seq) + ", diff: " + str(diff))
+        logging.info("[Virtual] seq/rpc: " + str(seq) + "/" + str(rpc) + ", diff: " + str(diff))
         return
     
     def get_verified_batch_number(self):
@@ -51,7 +51,7 @@ class DiffRpcSeq:
         rpc = int(rpc_result["result"], 16)
         seq = int(seq_result["result"], 16)
         diff = seq - rpc
-        logging.info("[verified] rpc: " + str(rpc) + ", seq: " + str(seq) + ", diff: " + str(diff))
+        logging.info("[Verified]seq/rpc: " + str(seq) + "/" + str(rpc) + ", diff: " + str(diff))
         return
 
 if __name__ == '__main__':
