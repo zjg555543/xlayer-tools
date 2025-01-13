@@ -74,7 +74,7 @@ class StressETH:
         recipients = self.getAccounts()
         amounts = []
         for i in range(len(recipients)):
-            amounts.append(10000000000000)
+            amounts.append(100000000000000000)
         total_amount = sum(amounts) 
 
         # 调用 set() 函数
@@ -114,7 +114,64 @@ class StressETH:
             account = w3.eth.account.from_key(acc)
             acc_lists.append(account.address)
         return acc_lists
+    
+    def pending(self):
+        # 定义账户和私钥
+        # sender_address = '0x8f8E2d6cF621f30e9a11309D6A56A876281Fd534'  # 发送者地址
+        # receiver_address = '0xA6f7A6b2E9B4d41C582D4Aaf907F45321e2Ca847'  # 接收者地址
+        # private_key = '0x815405dddb0e2a99b12af775fd2929e526704e1d1aea6a0b4e74dc33e2f7fcd2'  # 发送者私钥
+        accList = self.getAccounts()
+        priList = self.getPrivate()
+        if len(accList) != len(priList):
+            logging.error("No account")
+            return
+        for i in range(len(accList)):
+            logging.info(f"Account: {accList[i]}" + " Private: " + priList[i])
+            w3 = Web3(Web3.HTTPProvider(self.config["rpc"]))
+            # 构建交易数据
+            transaction = {
+                'to': accList[i],  # 接收者地址
+                'value': 10,  # 转账金额（单位：wei）
+                'gas': 2000000,  # 设置gas limit
+                'gasPrice': w3.to_wei(20, "gwei"),  # 设置gas价格
+                'nonce': w3.eth.get_transaction_count(accList[i]) + 1,  # 获取发送者账户的交易计数器
+                'chainId': 195  # 主网 chainId
+            }
 
+            # 使用 build_transaction 生成交易数据
+            transaction = w3.eth.account.sign_transaction(transaction, priList[i])
+
+            # 查看构建的交易数据
+            tx_hash = w3.eth.send_raw_transaction(transaction.raw_transaction)
+            print(f"Transaction sent with hash: {tx_hash.hex()}")
+        return
+
+    def trigger(self):
+        accList = self.getAccounts()
+        priList = self.getPrivate()
+        if len(accList) != len(priList):
+            logging.error("No account")
+            return
+        for i in range(len(accList)):
+            logging.info(f"Account: {accList[i]}" + " Private: " + priList[i])
+            w3 = Web3(Web3.HTTPProvider(self.config["rpc"]))
+            # 构建交易数据
+            transaction = {
+                'to': accList[i],  # 接收者地址
+                'value': 10,  # 转账金额（单位：wei）
+                'gas': 2000000,  # 设置gas limit
+                'gasPrice': w3.to_wei(20, "gwei"),  # 设置gas价格
+                'nonce': w3.eth.get_transaction_count(accList[i]),  # 获取发送者账户的交易计数器
+                'chainId': 195  # 主网 chainId
+            }
+
+            # 使用 build_transaction 生成交易数据
+            transaction = w3.eth.account.sign_transaction(transaction, priList[i])
+
+            # 查看构建的交易数据
+            tx_hash = w3.eth.send_raw_transaction(transaction.raw_transaction)
+            print(f"Transaction sent with hash: {tx_hash.hex()}")
+        return
 
 if __name__ == '__main__':
     pybase = pybase.Pybase()
@@ -127,6 +184,10 @@ if __name__ == '__main__':
     opt = sys.argv[1]
     if opt == "depoly":
         case.depoly()
+    elif opt == "pending":
+        case.pending()
+    elif opt == "trigger":
+        case.trigger()
     else:
         logging.error("Invalid option")
 
